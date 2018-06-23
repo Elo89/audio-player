@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import AudioPlayer from './components/AudioPlayer';
-import songListMock from './songListMock';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import AudioPlayer from './containers/AudioPlayer';
+import songListMock from './songListMock'
+import reducers from './reducers/createReducers';
+import configureStore from './reducers/configureStore';
+
 
 class App extends Component {
+
   render() {
+    const store = configureStore({ reducers });
+
     return (
-      <div className="App">
+      <Provider store={store}>
         <AudioPlayer songList={songListMock} />
-      </div>
+      </Provider>
     );
   }
 }

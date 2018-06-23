@@ -1,4 +1,5 @@
 import React from 'react';
+import { isEmpty } from 'lodash';
 import SongList from '../SongList';
 import PlayIcon from './svgs/PlayIcon';
 import PrevTrack from './svgs/PrevTrack';
@@ -23,13 +24,15 @@ const AudioPlayer = ({
   setCurrentTime,
   refs,
   setSongTime,
-}) => (console.log('currentTrack', refs && refs.audio && refs.audio.currentTime, refs && refs.audio && refs.audio.duration),
+  indexTrack,
+}) => (console.log('Volume: ', indexTrack),
   <div>
+
     <audio
       ref={(audio) => refs.store('audio', audio)}
       volume={volume}
       preload="metadata"
-      src={songList[currentTrack].src}
+      src={currentTrack && !isEmpty(currentTrack) ? currentTrack.src : ''}
       autoPlay={play}
       onTimeUpdate={() => play && setCurrentTime()}
       >
@@ -37,7 +40,7 @@ const AudioPlayer = ({
     </audio>
 
     <div>
-      <PrevButton onClick={() => setSong(currentTrack - 1)}>
+      <PrevButton onClick={() => setSong(songList[indexTrack - 1], indexTrack - 1)}>
         <PrevTrack />
       </PrevButton>
       <PlayButton
@@ -46,7 +49,7 @@ const AudioPlayer = ({
       >
         <PlayIcon />
       </PlayButton>
-      <NextButton onClick={() => setSong(currentTrack + 1)}>
+      <NextButton onClick={() => setSong(songList[indexTrack + 1], indexTrack + 1)}>
         <NextTrack />
       </NextButton>
 
@@ -71,8 +74,10 @@ const AudioPlayer = ({
       </div>
     </div>
 
-    <SongList songList={songList} setSong={setSong} playStop={playStop} />
+    <SongList songList={songList} setSong={setSong} playStop={playStop} play={play} />
+
   </div>
 )
+
 
 export default AudioPlayer;
