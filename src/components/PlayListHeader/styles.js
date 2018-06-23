@@ -18,16 +18,21 @@ export const Flex = styled.div`
 
 export const Title = styled.div`
   color: #FFF;
-  font-size: 18px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 5px 0 10px;
 `;
 
 export const Author = styled.div`
   color: #FFF;
-  font-size: 12px;
+  font-size: 10px;
+  font-weight: 300;
+  text-transform: uppercase;
 `;
 
 export const Description = styled.div`
-  color: #FFF;
+  color: #BBB;
   font-size: 9px;
 `;
 

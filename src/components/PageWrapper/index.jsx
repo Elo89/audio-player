@@ -25,6 +25,7 @@ const PageWrapper = ({
   indexTrack,
 }) => currentTrack && (
   <Wrapper>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
     <AudioPlayer
       playStop={playStop}
       play={play}
