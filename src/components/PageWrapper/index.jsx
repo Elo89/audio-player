@@ -9,7 +9,12 @@ const PageWrapper = ({
   setSong,
   volume,
   setVolume,
-  songList,
+  albumMock: {
+    songList,
+    artist,
+    album,
+    photo,
+  },
   currentTrack,
   currentTime,
   setCurrentTime,
