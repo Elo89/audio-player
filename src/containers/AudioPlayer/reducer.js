@@ -9,8 +9,8 @@ import {
 const initialState = fromJS({
   play: false,
   volume: 100,
-  currentTrack: {},
-  indexTrack: null,
+  currentTrack: null,
+  indexTrack: 0,
 });
 
 export default handleActions({

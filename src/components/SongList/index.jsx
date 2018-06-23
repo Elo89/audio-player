@@ -1,8 +1,9 @@
 import React from 'react';
 import { Wrapper, IconsCel, TitleCel, ArtistCel, AlbumCel, Ul, Li } from './styles';
-import PlusIcon from './svgs/Plus';
+import PlusIcon from './svgs/PlusIcon';
+import PlayIcon from './svgs/PlayIcon';
 
-const SongList = ({ songList, setSong, playStop, play }) => (
+const SongList = ({ songList, setSong, playStop, play, indexTrack }) => (
   <Wrapper>
     <Ul>
       <Li>
@@ -21,7 +22,17 @@ const SongList = ({ songList, setSong, playStop, play }) => (
           setSong(songList[i], i);
         }}
         >
-        <IconsCel><PlusIcon /></IconsCel>
+        <IconsCel>
+          {indexTrack === i ?
+            <PlayIcon
+              width="14px"
+              fill="#fff"
+            />
+          :
+            <div />
+          }
+          <PlusIcon />
+        </IconsCel>
         <TitleCel>{title}</TitleCel>
         <ArtistCel>{artist}</ArtistCel>
         <AlbumCel>{album}</AlbumCel>

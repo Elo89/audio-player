@@ -1,4 +1,4 @@
-import { compose, withStateHandlers, withProps, withHandlers } from 'recompose';
+import { compose, withStateHandlers, withProps, withHandlers, lifecycle } from 'recompose';
 import { isEmpty } from 'lodash';
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect';
@@ -38,26 +38,21 @@ const mapDispatchToProps = {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withProps({ refs: new RefsStore() }),
+  lifecycle({
+    componentWillMount() {
+      const { playlist: { songList }, setCurrentTrackAction } = this.props;
+      setCurrentTrackAction({ currentTrack: songList[0], indexTrack: 0 })
+    }
+  }),
   withHandlers({
-    playStop: ({
-      refs,
-      playStopAction,
-      play,
-      setCurrentTrackAction,
-      currentTrack,
-      playlist: {
-        songList,
-      },
-    }) => (overridePlay) => {
-      if (play || overridePlay) {
-        refs.audio.pause();
-      } else {
+    playStop: ({ refs, playStopAction, play }) => (overridePlay) => {
+      const isPlayed = overridePlay || !play;
+      if (isPlayed) {
         refs.audio.play();
+      } else {
+        refs.audio.pause();
       }
-      if (!isEmpty(currentTrack)) {
-        setCurrentTrackAction({ currentTrack: songList[0], indexTrack: 0 });
-      }
-      playStopAction(overridePlay || !play);
+      playStopAction(isPlayed);
     },
     setVolume: ({ refs, setVolumeAction }) => (event) => {
       refs.audio.volume = event.target.value;

@@ -16,7 +16,7 @@ export const Cell = styled.div`
 
 export const IconsCel = styled(Cell)`
   width: 10%;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-right: 20px;
 `;
 

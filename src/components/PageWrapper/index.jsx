@@ -22,7 +22,7 @@ const PageWrapper = ({
   refs,
   setSongTime,
   indexTrack,
-}) => (
+}) => currentTrack && (
   <div>
     <AudioPlayer
       playStop={playStop}
@@ -54,6 +54,7 @@ const PageWrapper = ({
       setSong={setSong}
       playStop={playStop}
       play={play}
+      indexTrack={indexTrack}
     />
   </div>
 )
