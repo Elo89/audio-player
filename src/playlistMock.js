@@ -1,7 +1,7 @@
 export default {
   title: 'Playlist',
   author: 'Renato Rossi',
-  photo: 'https://images-na.ssl-images-amazon.com/images/I/91G-2o3aoNL._SL1500_.jpg',
+  photo: 'https://img00.deviantart.net/6a36/i/2017/055/f/4/classic_rock_playlist_cover_by_azucar95-db06qcu.jpg',
   description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   songList: [
     {

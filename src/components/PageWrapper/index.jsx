@@ -2,6 +2,7 @@ import React from 'react';
 import SongList from '../SongList';
 import AudioPlayer from '../AudioPlayer';
 import PlayListHeader from '../PlayListHeader';
+import { Wrapper } from './styles';
 
 const PageWrapper = ({
   playStop,
@@ -23,7 +24,7 @@ const PageWrapper = ({
   setSongTime,
   indexTrack,
 }) => currentTrack && (
-  <div>
+  <Wrapper>
     <AudioPlayer
       playStop={playStop}
       play={play}
@@ -56,7 +57,7 @@ const PageWrapper = ({
       play={play}
       indexTrack={indexTrack}
     />
-  </div>
+  </Wrapper>
 )
 
 

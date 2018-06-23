@@ -12,7 +12,7 @@ export const Flex = styled.div`
   display: flex;
   align-items: center;
   padding: 20px;
-  background: #222;
+  background: transparent;
   flex: 0 100% 0;
 `;
 

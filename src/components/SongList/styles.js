@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   height: calc(100vh - 320px);
-  background: #222;
+  background: transparent;
   color: #FFF;
   font-size: 12px;
 `;
