@@ -14,22 +14,46 @@ export const Cell = styled.div`
   align-items: center;
 `;
 
-export const IconsCel = styled(Cell)`
+export const IconsCell = styled(Cell)`
   width: 10%;
   justify-content: space-between;
   padding-right: 20px;
 `;
 
-export const TitleCel = styled(Cell)`
+export const IconsCellHead = styled(IconsCell)`
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #AAA;
+`;
+
+export const TitleCell = styled(Cell)`
   width: 40%;
 `;
 
-export const ArtistCel = styled(Cell)`
+export const TitleCellHead = styled(TitleCell)`
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #AAA;
+`;
+
+export const ArtistCell = styled(Cell)`
   width: 20%;
 `;
 
-export const AlbumCel = styled(Cell)`
+export const ArtistCellHead = styled(ArtistCell)`
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #AAA;
+`;
+
+export const AlbumCell = styled(Cell)`
   width: 30%;
+`;
+
+export const AlbumCellHead = styled(AlbumCell)`
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #AAA;
 `;
 
 export const Li = styled.div`

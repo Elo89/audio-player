@@ -1,16 +1,28 @@
 import React from 'react';
-import { Wrapper, IconsCel, TitleCel, ArtistCel, AlbumCel, Ul, Li } from './styles';
 import PlusIcon from './svgs/PlusIcon';
 import PlayIcon from './svgs/PlayIcon';
+import {
+  Wrapper,
+  IconsCellHead,
+  TitleCellHead,
+  ArtistCellHead,
+  AlbumCellHead,
+  IconsCell,
+  TitleCell,
+  ArtistCell,
+  AlbumCell,
+  Ul,
+  Li,
+} from './styles';
 
 const SongList = ({ songList, setSong, playStop, play, indexTrack }) => (
   <Wrapper>
     <Ul>
       <Li>
-        <IconsCel></IconsCel>
-        <TitleCel>Title</TitleCel>
-        <ArtistCel>Artist</ArtistCel>
-        <AlbumCel>Album</AlbumCel>
+        <IconsCellHead></IconsCellHead>
+        <TitleCellHead>Title</TitleCellHead>
+        <ArtistCellHead>Artist</ArtistCellHead>
+        <AlbumCellHead>Album</AlbumCellHead>
       </Li>
       {songList.map(({ title, src, artist, album }, i) =>
       <Li
@@ -22,7 +34,7 @@ const SongList = ({ songList, setSong, playStop, play, indexTrack }) => (
           setSong(songList[i], i);
         }}
         >
-        <IconsCel>
+        <IconsCell>
           {indexTrack === i ?
             <PlayIcon
               width="14px"
@@ -32,10 +44,10 @@ const SongList = ({ songList, setSong, playStop, play, indexTrack }) => (
             <div />
           }
           <PlusIcon />
-        </IconsCel>
-        <TitleCel>{title}</TitleCel>
-        <ArtistCel>{artist}</ArtistCel>
-        <AlbumCel>{album}</AlbumCel>
+        </IconsCell>
+        <TitleCell>{title}</TitleCell>
+        <ArtistCell>{artist}</ArtistCell>
+        <AlbumCell>{album}</AlbumCell>
       </Li>
     )}
   </Ul>
