@@ -51,7 +51,10 @@ const AudioPlayer = ({
 
       <InteractionElement>
         <ActionButtons>
-          <PrevButton onClick={() => setSong(songList[indexTrack - 1], indexTrack - 1)}>
+          <PrevButton
+            onClick={() => setSong(songList[indexTrack - 1], indexTrack - 1)}
+            disabled={indexTrack === 0}
+          >
             <PrevTrack />
           </PrevButton>
           <PlayButton
@@ -60,7 +63,10 @@ const AudioPlayer = ({
             >
             <PlayIcon />
           </PlayButton>
-          <NextButton onClick={() => setSong(songList[indexTrack + 1], indexTrack + 1)}>
+          <NextButton
+            onClick={() => setSong(songList[indexTrack + 1], indexTrack + 1)}
+            disabled={indexTrack === songList.length - 1}
+          >
             <NextTrack />
           </NextButton>
         </ActionButtons>

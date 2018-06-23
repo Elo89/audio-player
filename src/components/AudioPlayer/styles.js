@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
+  background: transparent;
+  cursor: pointer;
+
   &:focus {
-    outline:0;
+    outline: 0;
+  }
+
+  &:disabled {
+    fill: #666;
+    cursor: not-allowed;
   }
 `;
 
 export const PlayButton = styled(Button)`
-  background: transparent;
   border: ${({ play }) => play ? '1px' : '0'} solid #FFF;
   border-radius: 50%;
   fill: #fff;
@@ -17,7 +24,6 @@ export const PlayButton = styled(Button)`
 `;
 
 export const PrevButton = styled(Button)`
-  background: transparent;
   border: none;
   fill: #fff;
   width: 35px;
@@ -26,7 +32,6 @@ export const PrevButton = styled(Button)`
 `;
 
 export const NextButton = styled(Button)`
-  background: transparent;
   border: none;
   fill: #fff;
   width: 35px;
