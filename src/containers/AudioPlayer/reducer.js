@@ -18,6 +18,6 @@ export default handleActions({
     return state.set('play', status)
   },
   [audioPlayerVolume]: (state, { volume }) => state.set('volume', volume),
-  [audioPlayerSetSong]: (state, { song, indexTrack }) =>
-    state.set('currentTrack', song).set('indexTrack', indexTrack),
+  [audioPlayerSetSong]: (state, { currentTrack, indexTrack }) =>
+    state.set('currentTrack', currentTrack).set('indexTrack', indexTrack),
 }, { initialState });

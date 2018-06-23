@@ -1,4 +1,5 @@
 import { compose, withStateHandlers, withProps, withHandlers } from 'recompose';
+import { isEmpty } from 'lodash';
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect';
 import PageWrapper from '../../components/PageWrapper';
@@ -38,11 +39,23 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withProps({ refs: new RefsStore() }),
   withHandlers({
-    playStop: ({ refs, playStopAction, play }) => (overridePlay) => {
-      if (play) {
+    playStop: ({
+      refs,
+      playStopAction,
+      play,
+      setCurrentTrackAction,
+      currentTrack,
+      playlist: {
+        songList,
+      },
+    }) => (overridePlay) => {
+      if (play || overridePlay) {
         refs.audio.pause();
       } else {
         refs.audio.play();
+      }
+      if (!isEmpty(currentTrack)) {
+        setCurrentTrackAction({ currentTrack: songList[0], indexTrack: 0 });
       }
       playStopAction(overridePlay || !play);
     },
@@ -50,8 +63,8 @@ export default compose(
       refs.audio.volume = event.target.value;
       setVolumeAction(refs.audio.volume);
     },
-    setSong: ({ songList, setCurrentTrackAction }) => (currentTrack, i) => {
-      setCurrentTrackAction(currentTrack, i);
+    setSong: ({ songList, setCurrentTrackAction }) => (currentTrack, indexTrack) => {
+      setCurrentTrackAction({ currentTrack, indexTrack });
     },
   }),
   withStateHandlers(

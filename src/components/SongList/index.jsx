@@ -1,20 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Wrapper, IconsCel, TitleCel, ArtistCel, AlbumCel, Ul, Li } from './styles';
+import PlusIcon from './svgs/Plus';
 
 const SongList = ({ songList, setSong, playStop, play }) => (
-  <ul>
-    {songList.map(({ title, src }, i) =>
-      <li
+  <Wrapper>
+    <Ul>
+      <Li>
+        <IconsCel></IconsCel>
+        <TitleCel>Title</TitleCel>
+        <ArtistCel>Artist</ArtistCel>
+        <AlbumCel>Album</AlbumCel>
+      </Li>
+      {songList.map(({ title, src, artist, album }, i) =>
+      <Li
         key={src}
         onClick={() => {
-          console.log('rtyuytyu', i);
-          playStop(true);
+          if (!play) {
+            playStop(true);
+          }
           setSong(songList[i], i);
         }}
-      >
-        {title}
-      </li>
+        >
+        <IconsCel><PlusIcon /></IconsCel>
+        <TitleCel>{title}</TitleCel>
+        <ArtistCel>{artist}</ArtistCel>
+        <AlbumCel>{album}</AlbumCel>
+      </Li>
     )}
-  </ul>
+  </Ul>
+  </Wrapper>
 );
 
 export default SongList;

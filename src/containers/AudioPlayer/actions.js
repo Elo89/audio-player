@@ -5,4 +5,4 @@ export const audioPlayerPlayStop = createAction('APP/AUDIOPLAYER/STATUS', status
 
 export const audioPlayerVolume = createAction('APP/AUDIOPLAYER/VOLUME', volume => ({ volume }));
 
-export const audioPlayerSetSong = createAction('APP/AUDIOPLAYER/CURRENTSONG', (song, indexTrack) => ({ song, indexTrack }));
+export const audioPlayerSetSong = createAction('APP/AUDIOPLAYER/CURRENTSONG', ({ currentTrack, indexTrack }) => ({ currentTrack, indexTrack }));

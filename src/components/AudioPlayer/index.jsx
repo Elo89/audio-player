@@ -1,6 +1,6 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
-import SongList from '../SongList';
+// import SongList from '../SongList';
 import SongView from '../SongView';
 import PlayIcon from './svgs/PlayIcon';
 import PrevTrack from './svgs/PrevTrack';
@@ -12,7 +12,7 @@ import {
   NextButton,
   Timeline,
   VolumeSlider,
-  CurrentTime,
+  // CurrentTime,
   Wrapper,
   ActionButtons,
   RightActionButtons,

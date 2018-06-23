@@ -1,8 +1,7 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
 import SongList from '../SongList';
 import AudioPlayer from '../AudioPlayer';
-    import PlayListHeader from '../PlayListHeader';
+import PlayListHeader from '../PlayListHeader';
 
 const PageWrapper = ({
   playStop,
@@ -45,6 +44,9 @@ const PageWrapper = ({
       author={author}
       photo={photo}
       description={description}
+      setSong={setSong}
+      songList={songList}
+      playStop={playStop}
     />
 
     <SongList

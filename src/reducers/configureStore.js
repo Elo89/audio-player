@@ -14,11 +14,10 @@ export default function configureStore(initialState = {}) {
   const enhancers = [
     applyMiddleware(...middlewares),
   ];
-  console.log('store', enhancers[0]());
 
   const store = {
     ...createStore(createReducer(), fromJS(initialState), composeWithDevTools(...enhancers)),
-    // runSaga: sagaMiddleware.run,
+    runSaga: sagaMiddleware.run,
   };
 
   if (module.hot) {
