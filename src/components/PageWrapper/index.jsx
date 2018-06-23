@@ -2,6 +2,7 @@ import React from 'react';
 import { isEmpty } from 'lodash';
 import SongList from '../SongList';
 import AudioPlayer from '../AudioPlayer';
+    import PlayListHeader from '../PlayListHeader';
 
 const PageWrapper = ({
   playStop,
@@ -9,11 +10,12 @@ const PageWrapper = ({
   setSong,
   volume,
   setVolume,
-  albumMock: {
+  playlist: {
     songList,
-    artist,
-    album,
+    title,
+    author,
     photo,
+    description,
   },
   currentTrack,
   currentTime,
@@ -36,6 +38,13 @@ const PageWrapper = ({
       refs={refs}
       setSongTime={setSongTime}
       indexTrack={indexTrack}
+    />
+
+    <PlayListHeader
+      title={title}
+      author={author}
+      photo={photo}
+      description={description}
     />
 
     <SongList

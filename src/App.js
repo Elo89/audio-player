@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux';
 import AudioPlayer from './containers/AudioPlayer';
-import albumMock from './albumMock'
+import playlistMock from './playlistMock'
 import reducers from './reducers/createReducers';
 import configureStore from './reducers/configureStore';
 
@@ -14,7 +14,7 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <AudioPlayer albumMock={albumMock} />
+        <AudioPlayer playlist={playlistMock} />
       </Provider>
     );
   }
