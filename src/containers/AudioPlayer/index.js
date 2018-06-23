@@ -1,7 +1,7 @@
 import { compose, withStateHandlers, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect';
-import AudioPlayer from '../../components/AudioPlayer';
+import PageWrapper from '../../components/PageWrapper';
 import {
   makeSelectIsPlayed,
   makeSelectVolume,
@@ -31,7 +31,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = {
   playStopAction: audioPlayerPlayStop,
   setVolumeAction: audioPlayerVolume,
-  setSong: audioPlayerSetSong,
+  setCurrentTrackAction: audioPlayerSetSong,
 };
 
 export default compose(
@@ -50,9 +50,9 @@ export default compose(
       refs.audio.volume = event.target.value;
       setVolumeAction(refs.audio.volume);
     },
-    // setSong: ({ songList, setCurrentTrackAction }) => (currentTrack, i) => {
-    //   setCurrentTrackAction(currentTrack, i);
-    // },
+    setSong: ({ songList, setCurrentTrackAction }) => (currentTrack, i) => {
+      setCurrentTrackAction(currentTrack, i);
+    },
   }),
   withStateHandlers(
     {
@@ -77,4 +77,4 @@ export default compose(
       },
     },
   ),
-)(AudioPlayer);
+)(PageWrapper);

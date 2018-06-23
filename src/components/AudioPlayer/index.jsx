@@ -25,7 +25,7 @@ const AudioPlayer = ({
   refs,
   setSongTime,
   indexTrack,
-}) => (console.log('Volume: ', indexTrack),
+}) => (
   <div>
 
     <audio
@@ -73,9 +73,6 @@ const AudioPlayer = ({
           step="0.01"/>
       </div>
     </div>
-
-    <SongList songList={songList} setSong={setSong} playStop={playStop} play={play} />
-
   </div>
 )
 
