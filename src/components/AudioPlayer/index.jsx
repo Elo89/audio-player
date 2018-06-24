@@ -7,6 +7,10 @@ import PrevTrack from './svgs/PrevTrack';
 import NextTrack from './svgs/NextTrack';
 import VolumeIcon from './svgs/Volume';
 import {
+  getAudioEvent,
+  getDurationEvent,
+} from '../../utils/eventUtils';
+import {
   PlayButton,
   PrevButton,
   NextButton,
@@ -62,7 +66,7 @@ const AudioPlayer = ({
       <Timeline
         type="range"
         min="0.00001"
-        max={(refs[`audio-${indexTrack}`] && refs[`audio-${indexTrack}`].duration) || 0}
+        max={(getAudioEvent(refs, indexTrack) && getDurationEvent(refs, indexTrack)) || 0}
         value={currentTime || 0}
         step="0.00001"
         onChange={setSongTime}
