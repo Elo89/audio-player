@@ -1,44 +1,5 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
-  background: transparent;
-  cursor: pointer;
-
-  &:focus {
-    outline: 0;
-  }
-
-  &:disabled {
-    fill: #666;
-    cursor: not-allowed;
-  }
-`;
-
-export const PlayButton = styled(Button)`
-  border: ${({ play }) => play ? '1px' : '0'} solid #FFF;
-  border-radius: 50%;
-  fill: #fff;
-  width: 35px;
-  height: 35px;
-  padding: 10px;
-`;
-
-export const PrevButton = styled(Button)`
-  border: none;
-  fill: #fff;
-  width: 35px;
-  height: 35px;
-  padding: 10px;
-`;
-
-export const NextButton = styled(Button)`
-  border: none;
-  fill: #fff;
-  width: 35px;
-  height: 35px;
-  padding: 10px;
-`;
-
 export const CurrentTime = styled.div`
   width: ${({ percentage }) => percentage}%;
   background: red;

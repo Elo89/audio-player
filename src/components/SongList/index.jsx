@@ -1,7 +1,6 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
 import PlusIcon from './svgs/PlusIcon';
-import PlayIcon from './svgs/PlayIcon';
+import { PlayStopButton } from '../Buttons';
 import {
   Wrapper,
   IconsCellHead,
@@ -59,9 +58,10 @@ const SongList = ({
           }
           <IconsCell>
             {indexTrack === i ?
-              <PlayIcon
-                width="14px"
-                fill="#fff"
+              <PlayStopButton
+                play={play}
+                width="12px"
+                height="12px"
               />
             :
               <div />

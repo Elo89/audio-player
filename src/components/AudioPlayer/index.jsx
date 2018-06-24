@@ -1,22 +1,19 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
-// import SongList from '../SongList';
 import SongView from '../SongView';
-import PlayIcon from './svgs/PlayIcon';
-import PrevTrack from './svgs/PrevTrack';
-import NextTrack from './svgs/NextTrack';
 import VolumeIcon from './svgs/Volume';
+import MuteVolumeIcon from './svgs/MuteVolume';
 import {
   getAudioEvent,
   getDurationEvent,
 } from '../../utils/eventUtils';
 import {
-  PlayButton,
+  PlayStopButton,
   PrevButton,
   NextButton,
+} from '../Buttons';
+import {
   Timeline,
   VolumeSlider,
-  // CurrentTime,
   Wrapper,
   ActionButtons,
   RightActionButtons,
@@ -44,23 +41,19 @@ const AudioPlayer = ({
     <InteractionElement>
       <ActionButtons>
         <PrevButton
-          onClick={() => setSong(songList[indexTrack - 1], indexTrack - 1, 'prev')}
-          disabled={indexTrack === 0}
-        >
-          <PrevTrack />
-        </PrevButton>
-        <PlayButton
-          onClick={() => playStop()}
+          setSong={setSong}
+          songList={songList}
+          indexTrack={indexTrack}
+        />
+        <PlayStopButton
           play={play}
-          >
-          <PlayIcon />
-        </PlayButton>
+          playStop={playStop}
+        />
         <NextButton
-          onClick={() => setSong(songList[indexTrack + 1], indexTrack + 1, 'next')}
-          disabled={indexTrack === songList.length - 1}
-        >
-          <NextTrack />
-        </NextButton>
+          setSong={setSong}
+          songList={songList}
+          indexTrack={indexTrack}
+        />
       </ActionButtons>
 
       <Timeline
@@ -75,6 +68,7 @@ const AudioPlayer = ({
 
     <RightActionButtons>
       <VolumeIcon />
+      <MuteVolumeIcon />
       <VolumeSlider
         type="range"
         min="0.01"

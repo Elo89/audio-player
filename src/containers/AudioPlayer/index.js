@@ -1,5 +1,4 @@
 import { compose, withStateHandlers, withProps, withHandlers, lifecycle } from 'recompose';
-import { isEmpty } from 'lodash';
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect';
 import PageWrapper from '../../components/PageWrapper';
