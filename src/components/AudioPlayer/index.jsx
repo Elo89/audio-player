@@ -1,7 +1,5 @@
 import React from 'react';
 import SongView from '../SongView';
-import VolumeIcon from './svgs/Volume';
-import MuteVolumeIcon from './svgs/MuteVolume';
 import {
   getAudioEvent,
   getDurationEvent,
@@ -10,6 +8,7 @@ import {
   PlayStopButton,
   PrevButton,
   NextButton,
+  VolumeButton,
 } from '../Buttons';
 import {
   Timeline,
@@ -67,8 +66,10 @@ const AudioPlayer = ({
     </InteractionElement>
 
     <RightActionButtons>
-      <VolumeIcon />
-      <MuteVolumeIcon />
+      <VolumeButton
+        setVolume={setVolume}
+        volume={volume}
+      />
       <VolumeSlider
         type="range"
         min="0.01"

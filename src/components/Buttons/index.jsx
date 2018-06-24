@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
   background: transparent;
+  border: none;
   cursor: pointer;
 
   &:focus {
@@ -42,3 +43,4 @@ export const NextButtonStyle = styled(Button)`
 export { default as PlayStopButton } from './PlayStopButton';
 export { default as NextButton } from './NextButton';
 export { default as PrevButton } from './PrevButton';
+export { default as VolumeButton } from './VolumeButton';
