@@ -33,68 +33,54 @@ const AudioPlayer = ({
   setSongTime,
   indexTrack,
 }) => (
-  <div>
-    <audio
-      ref={(audio) => refs.store('audio', audio)}
-      volume={volume}
-      preload="metadata"
-      src={currentTrack && !isEmpty(currentTrack) ? currentTrack.src : ''}
-      autoPlay={play}
-      onTimeUpdate={() => play && setCurrentTime()}
-      >
-      Your browser does not support the audio element.
-    </audio>
+  <Wrapper>
 
-    <Wrapper>
+    <SongView currentTrack={currentTrack} />
 
-      <SongView currentTrack={currentTrack} />
-
-      <InteractionElement>
-        <ActionButtons>
-          <PrevButton
-            onClick={() => setSong(songList[indexTrack - 1], indexTrack - 1)}
-            disabled={indexTrack === 0}
+    <InteractionElement>
+      <ActionButtons>
+        <PrevButton
+          onClick={() => setSong(songList[indexTrack - 1], indexTrack - 1, 'prev')}
+          disabled={indexTrack === 0}
+        >
+          <PrevTrack />
+        </PrevButton>
+        <PlayButton
+          onClick={() => playStop()}
+          play={play}
           >
-            <PrevTrack />
-          </PrevButton>
-          <PlayButton
-            onClick={() => playStop()}
-            play={play}
-            >
-            <PlayIcon />
-          </PlayButton>
-          <NextButton
-            onClick={() => setSong(songList[indexTrack + 1], indexTrack + 1)}
-            disabled={indexTrack === songList.length - 1}
-          >
-            <NextTrack />
-          </NextButton>
-        </ActionButtons>
+          <PlayIcon />
+        </PlayButton>
+        <NextButton
+          onClick={() => setSong(songList[indexTrack + 1], indexTrack + 1, 'next')}
+          disabled={indexTrack === songList.length - 1}
+        >
+          <NextTrack />
+        </NextButton>
+      </ActionButtons>
 
-        <Timeline
-          type="range"
-          min="0.00001"
-          max={(refs.audio && refs.audio.duration) || 0}
-          value={currentTime || 0}
-          step="0.00001"
-          onChange={setSongTime}
-        />
-      </InteractionElement>
+      <Timeline
+        type="range"
+        min="0.00001"
+        max={(refs[`audio-${indexTrack}`] && refs[`audio-${indexTrack}`].duration) || 0}
+        value={currentTime || 0}
+        step="0.00001"
+        onChange={setSongTime}
+      />
+    </InteractionElement>
 
-
-      <RightActionButtons>
-        <VolumeIcon />
-        <VolumeSlider
-          type="range"
-          min="0.01"
-          max="1"
-          value={volume}
-          onChange={setVolume}
-          step="0.01"/>
-      </RightActionButtons>
-    </Wrapper>
-  </div>
-)
+    <RightActionButtons>
+      <VolumeIcon />
+      <VolumeSlider
+        type="range"
+        min="0.01"
+        max="1"
+        value={volume}
+        onChange={(e) => setVolume(e.target.value)}
+        step="0.01"/>
+    </RightActionButtons>
+  </Wrapper>
+);
 
 
 export default AudioPlayer;

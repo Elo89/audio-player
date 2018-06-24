@@ -26,7 +26,9 @@ const PageWrapper = ({
 }) => currentTrack && (
   <Wrapper>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+
     <AudioPlayer
+      refs={refs}
       playStop={playStop}
       play={play}
       setSong={setSong}
@@ -36,7 +38,6 @@ const PageWrapper = ({
       currentTrack={currentTrack}
       currentTime={currentTime}
       setCurrentTime={setCurrentTime}
-      refs={refs}
       setSongTime={setSongTime}
       indexTrack={indexTrack}
     />
@@ -57,6 +58,10 @@ const PageWrapper = ({
       playStop={playStop}
       play={play}
       indexTrack={indexTrack}
+      refs={refs}
+      volume={volume}
+      currentTrack={currentTrack}
+      setCurrentTime={setCurrentTime}
     />
   </Wrapper>
 )

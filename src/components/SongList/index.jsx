@@ -1,4 +1,5 @@
 import React from 'react';
+import { isEmpty } from 'lodash';
 import PlusIcon from './svgs/PlusIcon';
 import PlayIcon from './svgs/PlayIcon';
 import {
@@ -15,7 +16,17 @@ import {
   Li,
 } from './styles';
 
-const SongList = ({ songList, setSong, playStop, play, indexTrack }) => (
+const SongList = ({
+  songList,
+  setSong,
+  playStop,
+  play,
+  indexTrack,
+  refs,
+  volume,
+  currentTrack,
+  setCurrentTime,
+}) => (
   <Wrapper>
     <Ul>
       <Li>
@@ -24,31 +35,44 @@ const SongList = ({ songList, setSong, playStop, play, indexTrack }) => (
         <ArtistCellHead>Artist</ArtistCellHead>
         <AlbumCellHead>Album</AlbumCellHead>
       </Li>
-      {songList.map(({ title, src, artist, album }, i) =>
-      <Li
-        key={src}
-        onClick={() => {
-          if (!play) {
-            playStop(true);
+      {songList.map(({ title, src, artist, album }, i) => (
+        <Li
+          key={src}
+          onClick={() => {
+            if (!play) {
+              playStop(true);
+            }
+            setSong(songList[i], i);
+          }}
+          >
+          {(indexTrack === i || indexTrack === i - 1 || indexTrack === i + 1) &&
+            <audio
+              ref={(audio) => refs.store(`audio-${i}`, audio)}
+              volume={(indexTrack === i) ? volume : null}
+              preload="auto"
+              src={src}
+              autoPlay={(indexTrack === i) && play}
+              onTimeUpdate={() => play && setCurrentTime()}
+            >
+              Your browser does not support the audio element.
+            </audio>
           }
-          setSong(songList[i], i);
-        }}
-        >
-        <IconsCell>
-          {indexTrack === i ?
-            <PlayIcon
-              width="14px"
-              fill="#fff"
-            />
-          :
-            <div />
-          }
-          <PlusIcon />
-        </IconsCell>
-        <TitleCell>{title}</TitleCell>
-        <ArtistCell>{artist}</ArtistCell>
-        <AlbumCell>{album}</AlbumCell>
-      </Li>
+          <IconsCell>
+            {indexTrack === i ?
+              <PlayIcon
+                width="14px"
+                fill="#fff"
+              />
+            :
+              <div />
+            }
+            <PlusIcon />
+          </IconsCell>
+          <TitleCell>{title}</TitleCell>
+          <ArtistCell>{artist}</ArtistCell>
+          <AlbumCell>{album}</AlbumCell>
+        </Li>
+      )
     )}
   </Ul>
   </Wrapper>

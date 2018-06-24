@@ -22,6 +22,18 @@ class RefsStore {
   }
 }
 
+const fadeInOut = (refs, percentage, indexTrack, i, volume) => {
+  return setTimeout(async () => {
+    if (i <= volume) {
+      refs[`audio-${indexTrack}`].volume = (percentage - i) / 100;
+      refs[`audio-${indexTrack + 1}`].volume = i / 100;
+      i = i + 1;
+      return fadeInOut(refs, percentage, indexTrack, i, volume);
+    }
+    return null
+  }, 40)
+};
+
 const mapStateToProps = createStructuredSelector({
   play: makeSelectIsPlayed(),
   volume: makeSelectVolume(),
@@ -45,21 +57,40 @@ export default compose(
     }
   }),
   withHandlers({
-    playStop: ({ refs, playStopAction, play }) => (overridePlay) => {
+    playStop: ({ refs, playStopAction, play, indexTrack }) => (overridePlay) => {
       const isPlayed = overridePlay || !play;
       if (isPlayed) {
-        refs.audio.play();
+        refs[`audio-${indexTrack}`].play();
       } else {
-        refs.audio.pause();
+        refs[`audio-${indexTrack}`].pause();
       }
       playStopAction(isPlayed);
     },
-    setVolume: ({ refs, setVolumeAction }) => (event) => {
-      refs.audio.volume = event.target.value;
-      setVolumeAction(refs.audio.volume);
+    setVolume: ({ refs, setVolumeAction, indexTrack }) => (value, crossFadeIndex) => {
+      if (crossFadeIndex) {
+        refs[`audio-${crossFadeIndex}`].volume = value;
+      } else {
+        refs[`audio-${indexTrack}`].volume = value;
+        setVolumeAction(refs[`audio-${indexTrack}`].volume);
+      }
     },
-    setSong: ({ songList, setCurrentTrackAction }) => (currentTrack, indexTrack) => {
-      setCurrentTrackAction({ currentTrack, indexTrack });
+    setSong: ({
+      songList,
+      setCurrentTrackAction,
+      refs,
+      indexTrack,
+    }) => (
+      nextTrack,
+      nextIndexTrack,
+      status,
+    ) => {
+      if (status !== 'overlap') {
+        refs[`audio-${indexTrack}`].pause();
+      }
+      refs[`audio-${nextIndexTrack}`].currentTime = 0;
+      refs[`audio-${nextIndexTrack}`].play();
+
+      setCurrentTrackAction({ currentTrack: nextTrack, indexTrack: nextIndexTrack });
     },
   }),
   withStateHandlers(
@@ -67,18 +98,35 @@ export default compose(
       currentTime: 0,
     },
     {
-      setCurrentTime: ({ nextSong, currentTrack }, { refs }) => () => {
-        // console.log(refs.audio.currentTime >= refs.audio.duration);
-        // if (refs.audio.currentTime >= (refs.audio.duration - 8)) {
-        //   console.log('nextSong>>>>>>>>>>>>');
-        //   return ({ currentTrack: currentTrack + 1});
-        // }
+      setCurrentTime: ({
+        nextSong,
+        currentTrack
+      },
+      {
+        refs,
+        setCurrentTrackAction,
+        indexTrack,
+        playlist: { songList },
+        playStop,
+        setSong,
+        setVolume,
+        volume,
+      }) => () => {
+        if (refs[`audio-${indexTrack}`].currentTime > (refs[`audio-${indexTrack}`].duration - 8)) {
+          if (refs[`audio-${indexTrack}`].volume === (volume / 100)) {
+            if (songList.length - 1 > indexTrack) {
+              setSong(songList[indexTrack + 1], indexTrack + 1, 'overlap');
+              playStop(true);
+              fadeInOut(refs, volume, indexTrack, 1, volume);
+            }
+          }
+        }
         return ({
-          currentTime: refs.audio && refs.audio.currentTime
+          currentTime: refs[`audio-${indexTrack}`] && refs[`audio-${indexTrack}`].currentTime
         });
       },
-      setSongTime: (_, { refs }) => (event) => {
-        refs.audio.currentTime = event.target.value
+      setSongTime: (_, { refs, indexTrack }) => (event) => {
+        refs[`audio-${indexTrack}`].currentTime = event.target.value
         return ({
           currentTime: event.target && event.target.value
         });
