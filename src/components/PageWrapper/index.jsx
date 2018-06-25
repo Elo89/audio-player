@@ -47,9 +47,8 @@ const PageWrapper = ({
       author={author}
       photo={photo}
       description={description}
-      setSong={setSong}
-      songList={songList}
       playStop={playStop}
+      play={play}
     />
 
     <SongList

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '../Buttons';
 
 export const Img = styled.div`
   height: 200px;
@@ -44,11 +45,11 @@ export const Description = styled.div`
   font-size: 9px;
 `;
 
-export const PlayButton = styled.button`
+export const PlayButton = styled(Button)`
   color: #FFF;
   font-size: 12px;
   font-weight: bold;
-  background: green;
+  background: ${({ play }) => play ? 'red' : 'green'};
   border-radius: 30px;
   padding: 10px 40px;
   margin-top: 10px
