@@ -1,32 +1,33 @@
 import styled from 'styled-components';
 import { Button } from '../Buttons';
+import { white, defaultPadding, mobileBreackpoint } from '../../variablesCss';
 
 export const Img = styled.div`
   height: 200px;
   min-width: 200px;
   background: ${({ src }) => src && `url(${src})`};
   background-size: cover;
-  margin-right: 20px;
+  margin-right: ${defaultPadding};
 
-  @media only screen and (max-width: 600px) {
-    margin: 0 0 20px;
+  ${mobileBreackpoint} {
+    margin: 0 0 ${defaultPadding};
   }
 `;
 
 export const Flex = styled.div`
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: ${defaultPadding};
   background: transparent;
   flex: 0 100% 0;
 
-  @media only screen and (max-width: 600px) {
+  ${mobileBreackpoint} {
     flex-direction: column;
   }
 `;
 
 export const Title = styled.div`
-  color: #FFF;
+  color: ${white};
   font-size: 36px;
   font-weight: 700;
   line-height: 1;
@@ -34,7 +35,7 @@ export const Title = styled.div`
 `;
 
 export const Author = styled.div`
-  color: #FFF;
+  color: ${white};
   font-size: 10px;
   font-weight: 300;
   text-transform: uppercase;
@@ -46,7 +47,7 @@ export const Description = styled.div`
 `;
 
 export const PlayButton = styled(Button)`
-  color: #FFF;
+  color: ${white};
   font-size: 12px;
   font-weight: bold;
   background: ${({ play }) => play ? 'red' : 'green'};

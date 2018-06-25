@@ -1,4 +1,12 @@
 import styled from 'styled-components';
+import {
+  white,
+  darkGray,
+  disabled,
+  defaultPadding,
+  mobileBreackpoint,
+} from '../../variablesCss';
+
 
 export const CurrentTime = styled.div`
   width: ${({ percentage }) => percentage}%;
@@ -11,7 +19,7 @@ export const Timeline = styled.input`
   width: 100%;
   height: 2px;
   border-radius: 5px;
-  background: #d3d3d3;
+  background: ${disabled};
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -24,14 +32,14 @@ export const Timeline = styled.input`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #fff;
+    background: ${white};
     cursor: pointer;
   }
   &::-moz-range-thumb {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #fff;
+    background: ${white};
     cursor: pointer;
   }
 `;
@@ -54,21 +62,21 @@ export const VolumeSlider = styled.input`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #fff;
+    background: ${white};
     cursor: pointer;
   }
   &::-moz-range-thumb {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #fff;
+    background: ${white};
     cursor: pointer;
   }
 `;
 
 export const Wrapper = styled.div`
   height: 80px;
-  background: #333;
+  background: ${darkGray};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,10 +91,10 @@ export const ActionButtons = styled.div`
 `;
 
 export const RightActionButtons = styled(ActionButtons)`
-  padding: 0 20px;
+  padding: 0 ${defaultPadding};
   width: 25%;
 
-  @media only screen and (max-width: 600px) {
+  ${mobileBreackpoint} {
     width: 40%;
   }
 `;
@@ -98,8 +106,8 @@ export const InteractionElement = styled.div`
   align-items: center;
   width: 50%;
 
-  @media only screen and (max-width: 600px) {
+  ${mobileBreackpoint} {
     width: 60%;
-    padding-left: 20px;
+    padding-left: ${defaultPadding};
   }
 `;
