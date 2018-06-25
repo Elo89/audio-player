@@ -6,6 +6,10 @@ export const Img = styled.div`
   background: ${({ src }) => src && `url(${src})`};
   background-size: cover;
   margin-right: 20px;
+
+  @media only screen and (max-width: 600px) {
+    margin: 0 0 20px;
+  }
 `;
 
 export const Flex = styled.div`
@@ -14,6 +18,10 @@ export const Flex = styled.div`
   padding: 20px;
   background: transparent;
   flex: 0 100% 0;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled.div`

@@ -34,7 +34,6 @@ const AudioPlayer = ({
   indexTrack,
 }) => (
   <Wrapper>
-
     <SongView currentTrack={currentTrack} />
 
     <InteractionElement>
@@ -76,7 +75,8 @@ const AudioPlayer = ({
         max="1"
         value={volume}
         onChange={(e) => setVolume(e.target.value)}
-        step="0.01"/>
+        step="0.01"
+      />
     </RightActionButtons>
   </Wrapper>
 );

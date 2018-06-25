@@ -72,6 +72,9 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
 `;
 
 export const ActionButtons = styled.div`
@@ -82,6 +85,10 @@ export const ActionButtons = styled.div`
 export const RightActionButtons = styled(ActionButtons)`
   padding: 0 20px;
   width: 25%;
+
+  @media only screen and (max-width: 600px) {
+    width: 40%;
+  }
 `;
 
 export const InteractionElement = styled.div`
@@ -90,4 +97,9 @@ export const InteractionElement = styled.div`
   justify-content: center;
   align-items: center;
   width: 50%;
+
+  @media only screen and (max-width: 600px) {
+    width: 60%;
+    padding-left: 20px;
+  }
 `;

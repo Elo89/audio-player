@@ -13,6 +13,13 @@ export const Flex = styled.div`
   align-items: center;
   padding: 20px;
   width: 25%;
+
+  @media only screen and (max-width: 600px) {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #333;
+  }
 `;
 
 export const Title = styled.div`

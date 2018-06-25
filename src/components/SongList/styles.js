@@ -18,6 +18,10 @@ export const IconsCell = styled(Cell)`
   width: 10%;
   justify-content: space-between;
   padding-right: 20px;
+
+  @media only screen and (max-width: 600px) {
+    width: 20%;
+  }
 `;
 
 export const IconsCellHead = styled(IconsCell)`
@@ -28,6 +32,10 @@ export const IconsCellHead = styled(IconsCell)`
 
 export const TitleCell = styled(Cell)`
   width: 40%;
+
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
 `;
 
 export const TitleCellHead = styled(TitleCell)`
@@ -38,6 +46,10 @@ export const TitleCellHead = styled(TitleCell)`
 
 export const ArtistCell = styled(Cell)`
   width: 20%;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const ArtistCellHead = styled(ArtistCell)`
@@ -48,6 +60,10 @@ export const ArtistCellHead = styled(ArtistCell)`
 
 export const AlbumCell = styled(Cell)`
   width: 30%;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const AlbumCellHead = styled(AlbumCell)`
@@ -62,5 +78,5 @@ export const Li = styled.div`
 `;
 
 export const Ul = styled.div`
-  padding: 0 40px;
+  padding: 0 20px;
 `;
