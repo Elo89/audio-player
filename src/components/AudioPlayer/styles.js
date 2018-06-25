@@ -4,7 +4,7 @@ import {
   darkGray,
   disabled,
   defaultPadding,
-  mobileBreackpoint,
+  mobileBreakpoint,
 } from '../../variablesCss';
 
 
@@ -94,7 +94,7 @@ export const RightActionButtons = styled(ActionButtons)`
   padding: 0 ${defaultPadding};
   width: 25%;
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     width: 40%;
   }
 `;
@@ -106,7 +106,7 @@ export const InteractionElement = styled.div`
   align-items: center;
   width: 50%;
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     width: 60%;
     padding-left: ${defaultPadding};
   }

@@ -3,7 +3,7 @@ import {
   white,
   darkGray,
   defaultPadding,
-  mobileBreackpoint,
+  mobileBreakpoint,
 } from '../../variablesCss';
 
 export const Img = styled.div`
@@ -20,7 +20,7 @@ export const Flex = styled.div`
   padding: ${defaultPadding};
   width: 25%;
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -32,7 +32,7 @@ export const Title = styled.div`
   color: ${white};
   font-size: 12px;
 
-  {mobileBreackpoint} {
+  {mobileBreakpoint} {
     font-size: 10px;
   }
 `;
@@ -41,7 +41,7 @@ export const Album = styled.div`
   color: ${white};
   font-size: 9px;
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     font-size: 7px;
   }
 `;

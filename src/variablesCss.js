@@ -6,4 +6,4 @@ export const disabled = '#D3D3D3';
 
 export const defaultPadding = '20px';
 
-export const mobileBreackpoint = '@media (max-width: 600px)';
+export const mobileBreakpoint = '@media (max-width: 600px)';

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../Buttons';
-import { white, defaultPadding, mobileBreackpoint } from '../../variablesCss';
+import { white, defaultPadding, mobileBreakpoint } from '../../variablesCss';
 
 export const Img = styled.div`
   height: 200px;
@@ -9,7 +9,7 @@ export const Img = styled.div`
   background-size: cover;
   margin-right: ${defaultPadding};
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     margin: 0 0 ${defaultPadding};
   }
 `;
@@ -21,7 +21,7 @@ export const Flex = styled.div`
   background: transparent;
   flex: 0 100% 0;
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     flex-direction: column;
   }
 `;

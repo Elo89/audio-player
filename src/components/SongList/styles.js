@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { white, gray, defaultPadding, mobileBreackpoint } from '../../variablesCss';
+import { white, gray, defaultPadding, mobileBreakpoint } from '../../variablesCss';
 
 export const Wrapper = styled.div`
   height: calc(100vh - 320px);
@@ -20,7 +20,7 @@ export const IconsCell = styled(Cell)`
   justify-content: space-between;
   padding-right: ${defaultPadding};
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     width: 20%;
   }
 `;
@@ -34,7 +34,7 @@ export const IconsCellHead = styled(IconsCell)`
 export const TitleCell = styled(Cell)`
   width: 40%;
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     width: 80%;
   }
 `;
@@ -48,7 +48,7 @@ export const TitleCellHead = styled(TitleCell)`
 export const ArtistCell = styled(Cell)`
   width: 20%;
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     display: none;
   }
 `;
@@ -62,7 +62,7 @@ export const ArtistCellHead = styled(ArtistCell)`
 export const AlbumCell = styled(Cell)`
   width: 30%;
 
-  ${mobileBreackpoint} {
+  ${mobileBreakpoint} {
     display: none;
   }
 `;
@@ -76,6 +76,15 @@ export const AlbumCellHead = styled(AlbumCell)`
 export const Li = styled.div`
   list-style: none;
   display: flex;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(130, 130, 130, .1);
+  }
+
+  &:first-child {
+    background: none;
+  }
 `;
 
 export const Ul = styled.div`
